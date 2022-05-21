@@ -16,7 +16,7 @@ namespace Calculator.Strategies
         {
             var result = String.Empty;
             var stack = new Stack<string>();
-            var tokens = expression.SplitStringToArrayByToken(' ');
+            var tokens = expression.SplitStringToArrayByToken(TokenConstants.SpaceSeparator);
 
             foreach (var token in tokens)
             {

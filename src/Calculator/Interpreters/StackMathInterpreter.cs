@@ -25,7 +25,7 @@ namespace Calculator.Interpreters
         public decimal Evaluate(string infixString)
         {
             string machineReadableString = _strategy.Convert(infixString);
-            var tokens = machineReadableString.SplitStringToArrayByToken(' ');
+            var tokens = machineReadableString.SplitStringToArrayByToken(TokenConstants.SpaceSeparator);
             Stack<decimal> result = new Stack<decimal>();
             decimal left, right;
             if (_strategy is InfixToPostfixParserStrategy)
