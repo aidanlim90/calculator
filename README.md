@@ -19,7 +19,7 @@ This repository contains the solution for calculator interview assessment. It is
 # Design Patterns Used
 
 1. **Strategy pattern** - to allow selecting the strategy for converting the infix string. Eg infix to postfix string .
-2. **Interpreter pattern** - to allow evaluate the  expression in postfix format. 
+2. **Interpreter pattern** - to allow evaluating the  expression in postfix format. 
 
 # Nuget Package Used In Tests
 1. xunit
