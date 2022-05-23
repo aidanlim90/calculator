@@ -1,5 +1,6 @@
 ﻿using Calculator.Abstractions;
 using Calculator.Constants;
+using Calculator.Entities;
 using Calculator.Enums;
 using Calculator.Exceptions;
 using Calculator.Extensions;

@@ -1,5 +1,6 @@
 ﻿using Calculator.Abstractions;
 using Calculator.Constants;
+using Calculator.Entities;
 using Calculator.Strategies;
 using Calculator.Extensions;
 

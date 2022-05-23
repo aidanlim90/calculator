@@ -2,7 +2,7 @@
 using Calculator.Extensions;
 using Calculator.Interpreters;
 
-namespace Calculator
+namespace Calculator.Entities
 {
     public class Operator
     {
