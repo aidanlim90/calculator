@@ -1,6 +1,5 @@
 ﻿using Calculator.Abstractions;
 using Calculator.Constants;
-using Calculator.Enums;
 using Calculator.Strategies;
 using Calculator.Extensions;
 
@@ -28,41 +27,23 @@ namespace Calculator.Interpreters
             string machineReadableString = _strategy.Convert(infixString);
             var tokens = machineReadableString.SplitStringToArrayByToken(TokenConstants.SpaceSeparator);
             Stack<decimal> result = new Stack<decimal>();
-            decimal left, right;
+            var operatorDictionary = Operator.GetOperationDictionary();
+
             if (_strategy is InfixToPostfixParserStrategy)
             {
                 foreach (string token in tokens)
                 {
-                    switch (token.GetOperatorTypeEnumValue())
+                    var tokenEnumValue = token.GetOperatorTypeEnumValue();
+                    
+                    if (operatorDictionary.ContainsKey(tokenEnumValue))
                     {
-                        case OperatorType.Plus:
-                            right = result.Pop();
-                            left = result.Pop();
-                            result.Push(new AddOperation()
-                                .Evaluate(left, right));
-                            break;
-                        case OperatorType.Minus:
-                            right = result.Pop();
-                            left = result.Pop();
-                            result.Push(new MinusOperation()
-                                .Evaluate(left, right));
-                            break;
-                        case OperatorType.Divide:
-                            right = result.Pop();
-                            left = result.Pop();
-                            result.Push(new DivideOperation()
-                                .Evaluate(left, right));
-                            break;
-                        case OperatorType.Multiply:
-                            right = result.Pop();
-                            left = result.Pop();
-                            result.Push(new MultiplyOperation()
-                                .Evaluate(left, right));
-                            break;
-                        default:
-                            result.Push(token.ToNumber());
-                            break;
+                        var right = result.Pop();
+                        var left = result.Pop();
+                        result.Push((decimal)operatorDictionary[tokenEnumValue].DynamicInvoke(left, right)!);
+                        continue;
                     }
+                    
+                    result.Push(token.ToNumber());
                 }
             }
 
