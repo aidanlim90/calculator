@@ -37,7 +37,7 @@ namespace Calculator.Extensions
         }
 
         /// <summary>
-        /// Get enum value from string
+        /// Get operation type enum value from string
         /// </summary>
         /// <param name="operatorType">String operator type</param>
         /// <returns>Value of enum</returns>
@@ -48,8 +48,6 @@ namespace Calculator.Extensions
                 "-" => OperatorType.Minus,
                 "*" => OperatorType.Multiply,
                 "/" => OperatorType.Divide,
-                "(" => OperatorType.LeftParenthesis,
-                ")" => OperatorType.RightParenthesis,
                 _ => OperatorType.None
             };
     }

@@ -6,8 +6,6 @@
         Minus,
         Multiply,
         Divide,
-        LeftParenthesis,
-        RightParenthesis,
         None
     }
 }

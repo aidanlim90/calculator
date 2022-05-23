@@ -1,4 +1,5 @@
 ﻿using Calculator.Abstractions;
+using Calculator.Constants;
 using Calculator.Enums;
 using Calculator.Exceptions;
 using Calculator.Extensions;
@@ -26,13 +27,13 @@ namespace Calculator.Strategies
                     continue;
                 }
                 
-                if (token.Equals(OperatorType.LeftParenthesis.GetString()))
+                if (token.Equals(SymbolType.LeftParenthesis.GetString()))
                 {
                     stack.Push(token);
                     continue;
                 }
        
-                if (token.Equals(OperatorType.RightParenthesis.GetString()))
+                if (token.Equals(SymbolType.RightParenthesis.GetString()))
                 {
                     result = AddOperatorFromStackToResultUntilLeftParenthesis(stack, result);
                     continue;
@@ -45,7 +46,7 @@ namespace Calculator.Strategies
             // add remain operator from stack to result
             while (stack.Count > 0)
             {
-                if(stack.Peek().Equals(OperatorType.LeftParenthesis.GetString()))
+                if(stack.Peek().Equals(SymbolType.LeftParenthesis.GetString()))
                 {
                     throw new IncorrectPairOfParenthesisException();
                 }
@@ -75,14 +76,14 @@ namespace Calculator.Strategies
             string result)
         {
             while (stack.Count > 0 
-                   && !stack.Peek().Equals(OperatorType.LeftParenthesis.GetString()))
+                   && !stack.Peek().Equals(SymbolType.LeftParenthesis.GetString()))
             {
                 result += $" {stack.Pop()}";
             }
 
             //check incorrect pair of parenthesis eg. (()))) which is invalid
             //count must more than one as still exist left parenthesis
-            if (stack.Count == 0 || !stack.Peek().Equals(OperatorType.LeftParenthesis.GetString()))
+            if (stack.Count == 0 || !stack.Peek().Equals(SymbolType.LeftParenthesis.GetString()))
             {
                 throw new IncorrectPairOfParenthesisException();
             }

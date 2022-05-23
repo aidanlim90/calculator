@@ -1,4 +1,4 @@
-﻿namespace Calculator
+﻿namespace Calculator.Constants
 {
     public class TokenConstants
     {

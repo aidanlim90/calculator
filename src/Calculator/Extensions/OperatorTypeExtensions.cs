@@ -17,8 +17,6 @@ namespace Calculator.Extensions
                 OperatorType.Minus => "-",
                 OperatorType.Multiply => "*",
                 OperatorType.Divide => "/",
-                OperatorType.LeftParenthesis => "(",
-                OperatorType.RightParenthesis => ")",
                 _ => throw new InvalidOperatorTypeException()
             };
     }
