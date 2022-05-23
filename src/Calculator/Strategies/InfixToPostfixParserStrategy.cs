@@ -40,13 +40,19 @@ namespace Calculator.Strategies
                 }
 
                 result = AddOperatorToResultFromStackIfLowerOrEqualPriorityThanTopOfStack(stack, token, result);
-                stack.Push(token); //add to stack if higher precedence
+                stack.Push(token); //add to stack if higher priority
             }
 
-            // add remain operator from stack to result
+            result = AddRemainOperatorFromStackToResult(stack, result);
+
+            return result;
+        }
+
+        private static string AddRemainOperatorFromStackToResult(Stack<string> stack, string result)
+        {
             while (stack.Count > 0)
             {
-                if(stack.Peek().Equals(SymbolType.LeftParenthesis.GetString()))
+                if (stack.Peek().Equals(SymbolType.LeftParenthesis.GetString()))
                 {
                     throw new IncorrectPairOfParenthesisException();
                 }
