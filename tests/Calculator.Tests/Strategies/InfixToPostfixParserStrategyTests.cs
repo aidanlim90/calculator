@@ -49,5 +49,6 @@ namespace Calculator.Tests.Strategies
             //Assert
             act.Should().Throw<IncorrectPairOfParenthesisException>();
         }
+
     }
 }

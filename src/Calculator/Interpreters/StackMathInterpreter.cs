@@ -1,6 +1,7 @@
 ﻿using Calculator.Abstractions;
 using Calculator.Constants;
 using Calculator.Entities;
+using Calculator.Exceptions;
 using Calculator.Strategies;
 using Calculator.Extensions;
 
@@ -43,7 +44,12 @@ namespace Calculator.Interpreters
                         result.Push((decimal)operatorDictionary[tokenEnumValue].DynamicInvoke(left, right)!);
                         continue;
                     }
-                    
+
+                    if (!token.IsNumber(out var number))
+                    {
+                        throw new InvalidOperatorTypeException();
+                    }
+
                     result.Push(token.ToNumber());
                 }
             }

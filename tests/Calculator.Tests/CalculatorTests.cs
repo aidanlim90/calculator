@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System;
+using Calculator.Exceptions;
+using FluentAssertions;
 using Xunit;
 
 namespace Calculator.Tests
@@ -26,6 +28,36 @@ namespace Calculator.Tests
 
             //Assert
             result.Should().Be(expectedResult);
+        }
+
+        [Theory]
+        [InlineData("7 @ 5 ")]
+        [InlineData("7 # 5 ")]
+        public void Evaluate_IncorrectOperator_ThrowInvalidOperatorTypeException(string infixString)
+        {
+            //Arrange
+
+            //Act
+            Action act = () => Calculator.Calculate(infixString);
+
+            //Assert
+            act.Should().Throw<InvalidOperatorTypeException>();
+        }
+
+        [Theory]
+        [InlineData("7 - 5 )")]
+        [InlineData("( 7 - 5")]
+        [InlineData("( ( 7 - 5 )")]
+        public void Evaluate_IncorrectPairOfParenthesis_ThrowIncorrectPairOfParenthesisException(string infixString)
+        {
+            //Arrange
+  
+
+            //Act
+            Action act = () => Calculator.Calculate(infixString);
+
+            //Assert
+            act.Should().Throw<IncorrectPairOfParenthesisException>();
         }
     }
 }

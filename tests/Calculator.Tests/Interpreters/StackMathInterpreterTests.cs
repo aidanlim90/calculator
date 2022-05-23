@@ -1,4 +1,6 @@
-﻿using Calculator.Abstractions;
+﻿using System;
+using Calculator.Abstractions;
+using Calculator.Exceptions;
 using Calculator.Interpreters;
 using Calculator.Strategies;
 using FluentAssertions;
@@ -31,6 +33,22 @@ namespace Calculator.Tests.Interpreters
 
             //Assert
             result.Should().Be(expectedResult);
+        }
+
+        [Theory]
+        [InlineData("7 @ 5 ")]
+        [InlineData("7 # 5 ")]
+        public void Evaluate_IncorrectOperator_ThrowInvalidOperatorTypeException(string infixString)
+        {
+            //Arrange
+            IParserStrategy infixToPostfixParserStrategy = new InfixToPostfixParserStrategy();
+            IInterpreter sut = new StackMathInterpreter(infixToPostfixParserStrategy);
+
+            //Act
+            Action act = () => sut.Evaluate(infixString);
+
+            //Assert
+            act.Should().Throw<InvalidOperatorTypeException>();
         }
     }
 }
