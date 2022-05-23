@@ -1,6 +1,6 @@
 # Calculator
 
-This repository contains the solution for calculator interview assessment. It is converting **infix to postfix** to make it machine readable then evalute the postfix expression with **stack parser**. Example-PostfixToInfixExample.png and StackParserExample.png in the repository.
+This repository contains the solution for calculator interview assessment. It converts **infix to postfix** to make it machine readable then evaluate the postfix expression with **stack parser**. Example-PostfixToInfixExample.png and StackParserExample.png in the repository.
 
 # Time Taken
 6 hours 10 min.
@@ -18,8 +18,8 @@ This repository contains the solution for calculator interview assessment. It is
 
 # Design Patterns Used
 
-1. **Strategy pattern** - to allow selecting the strategy for converting the infix string. Eg infix to postfix string .
-2. **Interpreter pattern** - to allow evaluating the  expression in postfix format. 
+1. **Strategy pattern** - to select the strategy for converting the infix string. Eg infix to postfix string .
+2. **Interpreter pattern** - to evaluate the  expression in postfix format. 
 
 # Nuget Package Used In Tests
 1. xunit
